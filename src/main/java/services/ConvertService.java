@@ -1,12 +1,12 @@
 package services;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.Base64;
+
 public class ConvertService {
-    public static  convert(String input) {
-        for (char c : input.toCharArray()) {
-
-        }
-
-    };
     public static int convertChar(char c) {
             int ascii = (int) c;
         if (ascii >= 0 && ascii <= 32) {
@@ -24,6 +24,19 @@ public class ConvertService {
         else {
             return ascii;
         }
+    };
+    public static String convertBase64(BufferedImage image) throws IOException {
+        String format = "png";
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        try {
+            ImageIO.write(image, format, outputStream);
+            return Base64.getEncoder().encodeToString(outputStream.toByteArray());
+        } finally {
+            outputStream.close();
+        }
+        }
+
     }
-}
+
 

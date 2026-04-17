@@ -8,14 +8,14 @@
     <name>SourceCodeMinimaps</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor url="https://www.yourcompany.com">YourCompany</vendor>
+    <vendor>SourceCodeMinimaps</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-description -->
-    <description><![CDATA[
-        Enter short description for your plugin here.<br>
-        <em>most HTML tags may be used</em>
-        ]]></description>
+<!--    <description><![CDATA[-->
+<!--        Enter short description for your plugin here.<br>-->
+<!--        <em>most HTML tags may be used</em>-->
+<!--        ]]></description>-->
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
@@ -26,8 +26,22 @@
     <!-- Extensions defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="MyToolWindow" factoryClass="plugin.com.br.MyToolWindowFactory"
-                    icon="AllIcons.Toolwindows.ToolWindowPalette"/>
+
     </extensions>
+    <actions>
+
+        <action id="SourceCodeMinimaps.SendAction"
+                class="actions.SendAction"
+                text="Capturar Código para Imagem"
+                description="Captura até 128 linhas do editor e envia para o servidor"
+                icon="AllIcons.Actions.MenuSaveall"> <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+
+            <add-to-group group-id="MainToolbarRight" anchor="last"/>
+
+            <add-to-group group-id="MainToolBar" anchor="last"/>
+
+        </action>
+
+    </actions>
 
 </idea-plugin>
