@@ -1,5 +1,8 @@
 package requests;
 
+import dto.ImageDTO;
+import dto.ResponseDTO;
+
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -7,12 +10,12 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 
 public class PostImageRequest {
-    public static HttpResponse<String> uploadImage(String title, String base64Image) throws Exception {
-        String url = "";
+    public static HttpResponse<String> uploadImage(ImageDTO image) throws Exception {
+        String url = "https://servidorteste:8080";
         String jsonBody = String.format(
                 "{\"title\": \"%s\", \"image\": \"%s\"}",
-                title.replace("\"", "\\\""),
-                base64Image
+                image.projectName().replace("\"", "\\\""),
+                image.base64Image()
         );
 
         HttpRequest request = HttpRequest.newBuilder()
